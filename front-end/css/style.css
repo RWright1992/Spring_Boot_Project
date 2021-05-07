@@ -62,14 +62,16 @@ footer {
     background-color: rgba(0, 0, 0, .1);
     border: solid rgba(0, 0, 0, .15);
     border-width: 1px 0;
-    border-radius:1em;;
+    border-radius: 1em;
     box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
     margin-top: 2em;
     margin-left: 2em;
-    padding:0.5em;
-    width:75%;
-    display:inline-block;
-    position:absolute;
+    padding: 0.5em;
+    width: 75%;
+    display: inline-block;
+    position: absolute;
+    overflow: auto;
+    max-height: 60vh;
 }
 
 #input-header {
@@ -78,6 +80,7 @@ footer {
 
 .main-block{
     position:relative;
+    min-height: 50%;
 }
 
 .form-btns {
@@ -120,4 +123,15 @@ footer {
     color: #ffffff !important;
     background-color: #ce4f5b !important;
     border: none !important;
+}
+
+#results-div::-webkit-scrollbar
+{
+	width: 10px;
+}
+
+#results-div::-webkit-scrollbar-thumb
+{
+	border-radius: 5em;
+	background-image: linear-gradient(#539aac, #004050);
 }

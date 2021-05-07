@@ -2,6 +2,8 @@ package com.qa.musichwa.rest;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,8 +27,8 @@ public class MusicController {
 	
 	// CREATE
 	@PostMapping("/create")
-	public Music createMusic(@RequestBody Music music) {
-		return this.service.create(music);
+	public ResponseEntity<Music> createMusic(@RequestBody Music music) {
+		return new ResponseEntity<Music>(this.service.create(music), HttpStatus.CREATED);
 	}
 	
 	// READ ALL

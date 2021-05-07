@@ -34,24 +34,25 @@ public class MusicController {
 	// READ ALL
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Music>> getAll() {
-		return ResponseEntity.ok(this.service.getAll());
+		return new ResponseEntity<List<Music>>(this.service.getAll(), HttpStatus.OK);
 	}
 	
 	// READ ONE
 	@GetMapping("/getOne/{id}")
 	public ResponseEntity<Music> getOne(@PathVariable long id) {
-		return ResponseEntity.ok(this.service.getOne(id));
+		return new ResponseEntity<Music>(this.service.getOne(id), HttpStatus.OK);
 	}
 	
 	// DELETE ONE
 	@DeleteMapping("/remove/{id}")
-	public boolean delete(@PathVariable long id) {
-		return this.service.delete(id);
+	public ResponseEntity<Boolean> delete(@PathVariable long id) {
+		return (this.service.delete(id)) ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : 
+			new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	// UPDATE ONE
 	@PutMapping("/update/{id}")
-	public Music update(@RequestBody Music newMusic, @PathVariable long id) {
-		return this.service.update(id, newMusic);
+	public ResponseEntity<Music> update(@RequestBody Music newMusic, @PathVariable long id) {
+		return new ResponseEntity<Music>(this.service.update(id, newMusic), HttpStatus.ACCEPTED);
 	}
 }

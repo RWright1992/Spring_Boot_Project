@@ -9,7 +9,7 @@ import com.qa.musichwa.domain.Music;
 import com.qa.musichwa.repos.MusicRepo;
 
 @Service
-public class MusicService implements ServiceI<Music> {
+public class MusicService implements ServiceIF<Music> {
 	
 	private MusicRepo repo;
 	

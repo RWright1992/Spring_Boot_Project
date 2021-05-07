@@ -2,7 +2,7 @@ package com.qa.musichwa.service;
 
 import java.util.List;
 
-public interface ServiceI<T> {
+public interface ServiceIF<T> {
 	
 	T create(T t);
 	

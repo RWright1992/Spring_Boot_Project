@@ -42,7 +42,7 @@ public class MusicService implements ServiceIF<Music> {
         existing.setArtist(newMusic.getArtist());
         existing.setYear(newMusic.getYear());
         
-        return this.repo.save(existing);
+        return this.repo.saveAndFlush(existing);
 	}
 
 	@Override

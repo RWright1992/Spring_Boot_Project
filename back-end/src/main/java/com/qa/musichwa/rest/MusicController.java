@@ -33,14 +33,14 @@ public class MusicController {
 	
 	// READ ALL
 	@GetMapping("/getAll")
-	public List<Music> getAll() {
-		return this.service.getAll();
+	public ResponseEntity<List<Music>> getAll() {
+		return ResponseEntity.ok(this.service.getAll());
 	}
 	
 	// READ ONE
 	@GetMapping("/getOne/{id}")
-	public Music getOne(@PathVariable long id) {
-		return this.service.getOne(id);
+	public ResponseEntity<Music> getOne(@PathVariable long id) {
+		return ResponseEntity.ok(this.service.getOne(id));
 	}
 	
 	// DELETE ONE

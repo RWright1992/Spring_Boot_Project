@@ -1,10 +1,15 @@
-html, body {height: 100%}
+html {height: 100%}
+
 body {background-image:linear-gradient(#f8f9fa, #004050)}
+
 footer {
     background-color: #0f4b5a;
     color: #f8f9fa;
     font-weight: 300;
     padding-top:0 !important;
+    position:absolute;
+    bottom:0;
+    width: 100%;
 }
 .navbar {
     font-weight: 400;
@@ -62,7 +67,7 @@ footer {
     margin-top: 2em;
     margin-left: 2em;
     padding:0.5em;
-    width:90%;
+    width:75%;
     display:inline-block;
     position:absolute;
 }
@@ -71,9 +76,7 @@ footer {
     text-align: center;
 }
 
-.main-text-block{
-    margin-left:1em;
-    margin-right:0;
+.main-block{
     position:relative;
 }
 
@@ -97,4 +100,24 @@ footer {
 .form-floating>.form-select {
     height: 2.6em !important;
     padding-top: 0.5em !important;
+}
+
+.alert {
+    border:none !important;
+    padding: 0.25rem !important;
+    margin-bottom: 0 !important;
+    margin-top: 0.5em !important;
+    text-align: center;
+}
+
+.alert-success {
+    color: #0f5132 !important;
+    background-color: #4dec56 !important;
+    border: none !important;
+}
+
+.alert-danger {
+    color: #ffffff !important;
+    background-color: #ce4f5b !important;
+    border: none !important;
 }

@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
-<body class="d-flex flex-column h-100" onload="getTest()">
+<body class="d-flex flex-column h-100" onload="getAll()">
     <header>
         <div class="container">
             <nav class="navbar navbar-light">
@@ -43,7 +43,7 @@
                         autocomplete="off">
                     <label for="floatingPassword">Artist</label>
                 </div>
-                <!-- <div class="form-floating">
+                <div class="form-floating">
                     <input type="text" class="form-control year-input" id="floatingInput" placeholder="Year" autocomplete="off">
                     <label for="floatingPassword">Year</label>
                 </div>
@@ -53,10 +53,9 @@
                         <option value="1">Single</option>
                         <option value="2">Album</option>
                     </select>
-                </div> -->
+                </div>
                 <div>
-                    <button id="create_btn" class="btn btn-sm btn-primary form-btns" type="button"
-                        onClick="postTest()">Create</button>
+                    <button id="create_btn" class="btn btn-sm btn-primary form-btns" type="button">Create</button>
                     <button class="btn btn-sm btn-primary form-btns" type="reset">Reset</button>
                 </div>
             </form>

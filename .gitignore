@@ -1,7 +1,7 @@
-.settings/
 bin/
 .*
 !.gitignore
+HELP.md
 
 ### STS ###
 .apt_generated
@@ -27,6 +27,8 @@ buildNumber.properties
 # JAVA
 # Compiled class file
 *.class
+### VS Code ###
+.vscode/		
 
 # Log file
 *.log
@@ -49,3 +51,6 @@ buildNumber.properties
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+### VS Code ###
+.vscode/

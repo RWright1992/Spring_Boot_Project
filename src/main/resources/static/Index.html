@@ -6,13 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <!-- Boostrap CSS-->
+    <!-- Boostrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- Datepicket CSS -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
         integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
         crossorigin="anonymous" />
+    <!-- My CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -34,27 +36,27 @@
     </header>
     <div class="container main-block">
         <div id="form-div">
-            <form>
+            <form name="createForm">
                 <div id="input-header">
                     <h5>Add new music</h1>
                 </div>
                 <div class="form-floating">
                     <input type="text" class="form-control name-input" id="floatingInput" placeholder="Name"
-                        autocomplete="off" required>
+                        autocomplete="off" name="name">
                     <label for="floatingInput">Name</label>
                 </div>
                 <div class="form-floating">
                     <input type="text" class="form-control artist-input" id="floatingInput" placeholder="Artist"
-                        autocomplete="off" required>
+                        autocomplete="off" name="artist">
                     <label for="floatingPassword">Artist</label>
                 </div>
                 <div class="form-floating">
                     <input type="text" class="form-control year-input" id="datepicker" placeholder="Year"
-                        autocomplete="off" required>
+                        autocomplete="off" name="year">
                     <label for="floatingPassword">Year</label>
                 </div>
                 <div class="form-floating">
-                    <select class="form-select type-input" id="inputGroupSelect04" required>
+                    <select class="form-select type-input" id="inputGroupSelect04" name="type">
                         <option value="">Choose...</option>
                         <option value="1">Single</option>
                         <option value="2">Album</option>
@@ -66,8 +68,6 @@
                     <button class="btn btn-sm btn-primary form-btns" type="reset">Reset</button>
                 </div>
             </form>
-            <!-- <div class="alert" id="onSuccess"></div>
-            <div class="alert" id="onError"></div> -->
         </div>
         <div id="results-div"></div>
     </div>
@@ -85,7 +85,7 @@
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
         crossorigin="anonymous"></script>
 
-    <!-- Bootstrap Datepicker -->
+    <!-- Datepicker JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
         integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
         crossorigin="anonymous"></script>
@@ -97,7 +97,7 @@
  
     <!-- MY JS -->
     <script src="js/hwa.js"></script>
-    
+
 </body>
 
 </html>

@@ -37,6 +37,11 @@ const getAll = () => {
 
 // Post request
 const create = () => {
+    // Validate the form
+    if (!validateForm()) {
+        return;
+    }
+
     // Input values
     const NAME_VALUE = NAME.value;
     const ARTIST_VALUE = ARTIST.value;
@@ -92,4 +97,13 @@ const printResult = (result) => {
     const TEXT = document.createTextNode(`Name: ${result.name} Artist: ${result.artist} Year: ${result.year} Type: ${result.type}`);
     P.appendChild(TEXT);
     RESULTS_DIV.appendChild(P);
+}
+
+function validateForm() {
+    const f = document.forms["createForm"];
+    if (f["name"].value == "" || f["artist"].value == "" || f["year"].value == "" || f["type"].value == "") {
+        alert("All fields require a value!");
+        return false;
+    }
+    return true;
 }

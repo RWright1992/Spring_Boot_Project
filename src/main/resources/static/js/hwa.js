@@ -16,6 +16,13 @@ const ARTIST = document.querySelector(".artist-input");
 const YEAR = document.querySelector(".year-input");
 const TYPE = document.querySelector(".type-input");
 
+// Datepicker year only
+$("#datepicker").datepicker( {
+    format: "yyyy",
+    viewMode: "years", 
+    minViewMode: "years"
+});
+
 // Get request
 const getAll = () => {
     axios.get(`${ADDR}/getAll`)

@@ -37,7 +37,7 @@ const getAll = () => {
 // Post request
 const create = () => {
     // Validate the form
-    if (!validateForm()) {
+    if (!validateCreateForm()) {
         return;
     }
 
@@ -68,16 +68,31 @@ const create = () => {
         })
 }
 
-const update = (id, name, artist, year, type) => {
+const update = () => {
+    // Validate the form
+    if (!validateEditForm()) {
+        return;
+    }
+
+    const EDIT_FORM = document.forms["editForm"];
+  
     // New object for update
     let obj = {
-        "name": name,
-        "artist": artist,
-        "year": year,
-        "type": type
+        "name": EDIT_FORM["name"].value,
+        "artist": EDIT_FORM["artist"].value,
+        "year": EDIT_FORM["year"].value,
+        "type": EDIT_FORM["type"].value
     };
-    
-    
+
+    axios.put(`${ADDR}/update/${EDIT_FORM["entry-id"].value}`, obj)
+        .then((resp) => {
+            // statusMsg(true);
+            $("#edit-modal").modal("hide");
+            getAll();
+        }).catch((err) => {
+            console.error(err);
+            // statusMsg(false);
+        })
 }
 
 const statusMsg = (bool) => {
@@ -126,8 +141,17 @@ const printResult = (result) => {
     RESULTS_DIV.appendChild(ENTRY_DIV);
 }
 
-const validateForm = () => {
+const validateCreateForm = () => {
     const CREATE_FORM = document.forms["createForm"];
+    if (CREATE_FORM["name"].value == "" || CREATE_FORM["artist"].value == "" || CREATE_FORM["year"].value == "" || CREATE_FORM["type"].value == "") {
+        alert("All fields require a value!");
+        return false;
+    }
+    return true;
+}
+
+const validateEditForm = () => {
+    const CREATE_FORM = document.forms["editForm"];
     if (CREATE_FORM["name"].value == "" || CREATE_FORM["artist"].value == "" || CREATE_FORM["year"].value == "" || CREATE_FORM["type"].value == "") {
         alert("All fields require a value!");
         return false;
@@ -140,7 +164,7 @@ const openEdit = (id) => {
     $("#edit-modal").modal("show");
     datepickerSetup();
 
-    // Get the single entry for updating
+    // Get the current values for selected entry
     axios.get(`${ADDR}/getOne/${id}`)
         .then((resp) => {
             const ENTRY = resp.data;
@@ -150,6 +174,7 @@ const openEdit = (id) => {
             EDIT_FORM["artist"].value = ENTRY.artist;
             EDIT_FORM["year"].value = ENTRY.year;
             EDIT_FORM["type"].value = ENTRY.type;
+            EDIT_FORM["entry-id"].value = ENTRY.id;
         }).catch((err) => console.error(err))
 }
 

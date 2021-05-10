@@ -87,6 +87,7 @@
                     <div class="modal-body">
                         <div id="form-div">
                             <form name="editForm">
+                                <input type="hidden" name="entry-id">
                                 <div class="form-floating">
                                     <input type="text" class="form-control name-input" id="floatingInput" placeholder="Name"
                                         autocomplete="off" name="name">
@@ -114,7 +115,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" onClick="update()">Save changes</button>
                     </div>
                 </div>
             </div>

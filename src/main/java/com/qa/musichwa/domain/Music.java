@@ -19,10 +19,10 @@ public class Music {
     @Column (nullable = false)
     private String name;
 
-    @Column
+    @Column (nullable = false)
     private String artist;
 
-    @Column
+    @Column (nullable = false)
     private long year; // 4 digit validation here (\b\d{4}\b) ?
 
     // Default constructor

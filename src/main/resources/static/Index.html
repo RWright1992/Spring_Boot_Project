@@ -63,13 +63,62 @@
                     </select>
                 </div>
                 <div>
-                    <button id="create_btn" class="btn btn-sm btn-primary form-btns" type="button"
+                    <button id="create-btn" class="btn btn-sm btn-primary form-btns" type="button"
                         onClick="create()">Create</button>
                     <button class="btn btn-sm btn-primary form-btns" type="reset">Reset</button>
                 </div>
             </form>
         </div>
         <div id="results-div"></div>
+
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-modal">
+            Launch demo modal
+        </button> -->
+        
+        <!-- Modal -->
+        <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="edit-modal-label">Edit Entry</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="form-div">
+                            <form name="createForm">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control name-input" id="floatingInput" placeholder="Name"
+                                        autocomplete="off" name="name">
+                                    <label for="floatingInput">Name</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control artist-input" id="floatingInput" placeholder="Artist"
+                                        autocomplete="off" name="artist">
+                                    <label for="floatingPassword">Artist</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="text" class="form-control year-input" id="datepicker" placeholder="Year" autocomplete="off"
+                                        name="year">
+                                    <label for="floatingPassword">Year</label>
+                                </div>
+                                <div class="form-floating">
+                                    <select class="form-select type-input" id="inputGroupSelect04" name="type">
+                                        <option value="">Choose...</option>
+                                        <option value="Single">Single</option>
+                                        <option value="Album">Album</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <footer>
         <div id="footerDivider" class="b-example-divider"></div>

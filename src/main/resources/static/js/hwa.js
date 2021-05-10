@@ -8,7 +8,7 @@ const RESULTS_DIV = document.querySelector("#results-div");
 const FORM_DIV = document.querySelector("#form-div");
 
 // Buttons
-const CREATE_BTN = document.querySelector("#create_btn");
+const CREATE_BTN = document.querySelector("#create-btn");
 
 // Inputs
 const NAME = document.querySelector(".name-input");
@@ -93,10 +93,25 @@ const statusMsg = (bool) => {
 }
 
 const printResult = (result) => {
-    const P = document.createElement("p");
-    const TEXT = document.createTextNode(`Name: ${result.name} Artist: ${result.artist} Year: ${result.year} Type: ${result.type}`);
-    P.appendChild(TEXT);
-    RESULTS_DIV.appendChild(P);
+    const ENTRY_DIV = document.createElement("div");
+    ENTRY_DIV.id = "entry-div";
+
+    const ENTRY = document.createElement("div");
+    ENTRY.id = "entry";
+    ENTRY.textContent = `Name: ${result.name} Artist: ${result.artist} Year: ${result.year} Type: ${result.type}`;
+
+    const EDIT = document.createElement("button");
+    EDIT.type = "button";
+    EDIT.textContent = "Edit";
+    EDIT.id = "edit-btn";
+    EDIT.setAttribute("class", "btn btn-sm btn-primary");
+    EDIT.setAttribute("data-bs-toggle", "modal");
+    EDIT.setAttribute("data-bs-target", "#edit-modal")
+
+    ENTRY_DIV.appendChild(ENTRY);
+    ENTRY_DIV.appendChild(EDIT);
+    
+    RESULTS_DIV.appendChild(ENTRY_DIV);
 }
 
 function validateForm() {

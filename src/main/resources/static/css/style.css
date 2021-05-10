@@ -135,3 +135,28 @@ footer {
 	border-radius: 5em;
 	background-image: linear-gradient(#539aac, #004050);
 }
+
+#entry-div {
+    position: relative;
+    height: 2em;
+    padding-bottom: 2.5em;
+}
+
+#entry {
+    width: 90%;
+}
+
+#edit-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.modal.fade .modal-dialog {
+    transition: transform .3s ease-out !important;
+    transform: translate(25%,-5%) !important;
+}
+
+.modal-content {
+    width:auto !important;
+}

@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
-<body class="d-flex flex-column h-100" onload="getAll()">
+<body class="d-flex flex-column h-100" onload="setup()">
     <header>
         <div class="container">
             <nav class="navbar navbar-light">
@@ -51,7 +51,7 @@
                     <label for="floatingPassword">Artist</label>
                 </div>
                 <div class="form-floating">
-                    <input type="text" class="form-control year-input" id="datepicker" placeholder="Year"
+                    <input type="text" class="form-control year-input" id="floatingInput" placeholder="Year"
                         autocomplete="off" name="year">
                     <label for="floatingPassword">Year</label>
                 </div>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="modal-body">
                         <div id="form-div">
-                            <form name="createForm">
+                            <form name="editForm">
                                 <div class="form-floating">
                                     <input type="text" class="form-control name-input" id="floatingInput" placeholder="Name"
                                         autocomplete="off" name="name">
@@ -98,7 +98,7 @@
                                     <label for="floatingPassword">Artist</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input type="text" class="form-control year-input" id="datepicker" placeholder="Year" autocomplete="off"
+                                    <input type="text" class="form-control year-input" id="floatingInput" placeholder="Year" autocomplete="off"
                                         name="year">
                                     <label for="floatingPassword">Year</label>
                                 </div>

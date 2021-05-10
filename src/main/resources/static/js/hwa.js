@@ -16,14 +16,13 @@ const ARTIST = document.querySelector(".artist-input");
 const YEAR = document.querySelector(".year-input");
 const TYPE = document.querySelector(".type-input");
 
-// Datepicker year only
-$("#datepicker").datepicker( {
-    format: "yyyy",
-    viewMode: "years", 
-    minViewMode: "years"
-});
+// Setup
+const setup = () => {
+    datepickerSetup();
+    getAll();
+}
 
-// Get request
+// Get all request
 const getAll = () => {
     axios.get(`${ADDR}/getAll`)
         .then((resp) => {
@@ -32,6 +31,15 @@ const getAll = () => {
             for (let result of RESULTS) {
                 printResult(result);
             }
+        }).catch((err) => console.error(err))
+}
+
+// Get one request
+const getOne = (id) => {
+    axios.get(`${ADDR}/getOne/${id}`)
+        .then((resp) => {
+            const RESULT = resp.data;
+            console.log(RESULT);
         }).catch((err) => console.error(err))
 }
 
@@ -94,19 +102,20 @@ const statusMsg = (bool) => {
 
 const printResult = (result) => {
     const ENTRY_DIV = document.createElement("div");
-    ENTRY_DIV.id = "entry-div";
+    ENTRY_DIV.setAttribute("class", "entry-div");
 
     const ENTRY = document.createElement("div");
-    ENTRY.id = "entry";
+    ENTRY.setAttribute("class", "entry");
     ENTRY.textContent = `Name: ${result.name} Artist: ${result.artist} Year: ${result.year} Type: ${result.type}`;
 
     const EDIT = document.createElement("button");
     EDIT.type = "button";
     EDIT.textContent = "Edit";
-    EDIT.id = "edit-btn";
-    EDIT.setAttribute("class", "btn btn-sm btn-primary");
-    EDIT.setAttribute("data-bs-toggle", "modal");
-    EDIT.setAttribute("data-bs-target", "#edit-modal")
+    EDIT.id = `${result.id}`;
+    EDIT.setAttribute("class", "btn btn-sm btn-primary edit-btn");
+    EDIT.setAttribute("onClick", "openEdit(this.id)");
+    // EDIT.setAttribute("data-bs-toggle", "modal");
+    // EDIT.setAttribute("data-bs-target", "#edit-modal")
 
     ENTRY_DIV.appendChild(ENTRY);
     ENTRY_DIV.appendChild(EDIT);
@@ -114,11 +123,27 @@ const printResult = (result) => {
     RESULTS_DIV.appendChild(ENTRY_DIV);
 }
 
-function validateForm() {
+const validateForm = () => {
     const f = document.forms["createForm"];
     if (f["name"].value == "" || f["artist"].value == "" || f["year"].value == "" || f["type"].value == "") {
         alert("All fields require a value!");
         return false;
     }
     return true;
+}
+
+const openEdit = (id) => {
+    $("#edit-modal").modal("show");
+    datepickerSetup();
+    // console.log(id);
+    getOne(id);
+}
+
+const datepickerSetup = () => {
+    // Sets to year only
+    $(".year-input").datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years"
+    });
 }

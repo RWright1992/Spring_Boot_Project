@@ -136,17 +136,17 @@ footer {
 	background-image: linear-gradient(#539aac, #004050);
 }
 
-#entry-div {
+.entry-div {
     position: relative;
     height: 2em;
     padding-bottom: 2.5em;
 }
 
-#entry {
+.entry {
     width: 90%;
 }
 
-#edit-btn {
+.edit-btn {
     position: absolute;
     right: 0;
     top: 0;

@@ -22,7 +22,7 @@ const setup = () => {
     getAll();
 }
 
-// Get all request
+// Get request
 const getAll = () => {
     axios.get(`${ADDR}/getAll`)
         .then((resp) => {
@@ -31,15 +31,6 @@ const getAll = () => {
             for (let result of RESULTS) {
                 printResult(result);
             }
-        }).catch((err) => console.error(err))
-}
-
-// Get one request
-const getOne = (id) => {
-    axios.get(`${ADDR}/getOne/${id}`)
-        .then((resp) => {
-            const RESULT = resp.data;
-            console.log(RESULT);
         }).catch((err) => console.error(err))
 }
 
@@ -75,6 +66,18 @@ const create = () => {
             console.error(err);
             statusMsg(false);
         })
+}
+
+const update = (id, name, artist, year, type) => {
+    // New object for update
+    let obj = {
+        "name": name,
+        "artist": artist,
+        "year": year,
+        "type": type
+    };
+    
+    
 }
 
 const statusMsg = (bool) => {
@@ -124,8 +127,8 @@ const printResult = (result) => {
 }
 
 const validateForm = () => {
-    const f = document.forms["createForm"];
-    if (f["name"].value == "" || f["artist"].value == "" || f["year"].value == "" || f["type"].value == "") {
+    const CREATE_FORM = document.forms["createForm"];
+    if (CREATE_FORM["name"].value == "" || CREATE_FORM["artist"].value == "" || CREATE_FORM["year"].value == "" || CREATE_FORM["type"].value == "") {
         alert("All fields require a value!");
         return false;
     }
@@ -133,10 +136,21 @@ const validateForm = () => {
 }
 
 const openEdit = (id) => {
+    // Show modal and configure date field
     $("#edit-modal").modal("show");
     datepickerSetup();
-    // console.log(id);
-    getOne(id);
+
+    // Get the single entry for updating
+    axios.get(`${ADDR}/getOne/${id}`)
+        .then((resp) => {
+            const ENTRY = resp.data;
+            // Populate modal form with current values
+            const EDIT_FORM = document.forms["editForm"];
+            EDIT_FORM["name"].value = ENTRY.name;
+            EDIT_FORM["artist"].value = ENTRY.artist;
+            EDIT_FORM["year"].value = ENTRY.year;
+            EDIT_FORM["type"].value = ENTRY.type;
+        }).catch((err) => console.error(err))
 }
 
 const datepickerSetup = () => {

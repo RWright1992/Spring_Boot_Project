@@ -159,4 +159,27 @@ footer {
 
 .modal-content {
     width:auto !important;
+    border-radius: 1em;
+}
+
+.modal-body {
+    padding-top: 0;
+    padding-bottom: 0.2em;
+}
+
+.modal-body #form-div {
+    margin-top: 0;
+}
+
+.modal-title {
+    padding-left: 27%
+}
+
+.modal-header {
+    padding: 0.2rem 1rem !important;
+}
+
+.modal-footer {
+    padding-top: 0 !important;
+    justify-content: center !important;
 }

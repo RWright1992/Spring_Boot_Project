@@ -1,7 +1,7 @@
 "use strict";
 
 // Host:Port
-const ADDR = "http://localhost:8080";
+const ADDR = "http://localhost:8080/api";
 
 // Divs
 const RESULTS_DIV = document.querySelector("#results-div");

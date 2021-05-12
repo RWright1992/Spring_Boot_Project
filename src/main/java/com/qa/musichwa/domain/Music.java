@@ -94,7 +94,6 @@ public class Music {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((artist == null) ? 0 : artist.hashCode());
-		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + (int) (year ^ (year >>> 32));
@@ -114,8 +113,6 @@ public class Music {
 			if (other.artist != null)
 				return false;
 		} else if (!artist.equals(other.artist))
-			return false;
-		if (id != other.id)
 			return false;
 		if (name == null) {
 			if (other.name != null)

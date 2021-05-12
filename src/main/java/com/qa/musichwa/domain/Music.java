@@ -30,6 +30,7 @@ public class Music {
     	super();
     }
     
+    // For creating
 	public Music(String type, String name, String artist, long year) {
 		super();
 		this.type = type;
@@ -38,7 +39,16 @@ public class Music {
 		this.year = year;
 	}
 	
-	
+	// For testing
+	public Music(long id, String type, String name, String artist, long year) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.name = name;
+		this.artist = artist;
+		this.year = year;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -77,5 +87,48 @@ public class Music {
 
 	public void setYear(long year) {
 		this.year = year;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((artist == null) ? 0 : artist.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + (int) (year ^ (year >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Music other = (Music) obj;
+		if (artist == null) {
+			if (other.artist != null)
+				return false;
+		} else if (!artist.equals(other.artist))
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		if (year != other.year)
+			return false;
+		return true;
 	}
 }

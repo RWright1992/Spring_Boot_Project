@@ -2,6 +2,7 @@ bin/
 .*
 !.gitignore
 HELP.md
+*.exe
 
 ### STS ###
 .apt_generated

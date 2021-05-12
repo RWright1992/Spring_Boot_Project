@@ -146,9 +146,21 @@ footer {
     width: 90%;
 }
 
-.edit-btn {
+@media screen and (max-width: 767px) {
+    .entry {
+        width: 70%;
+    }
+  }
+
+.del-btn {
     position: absolute;
     right: 0;
+    top: 0;
+}
+
+.edit-btn {
+    position: absolute;
+    right: 4.5em;
     top: 0;
 }
 

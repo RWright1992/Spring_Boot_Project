@@ -23,7 +23,7 @@ public class Music {
     private String artist;
 
     @Column (nullable = false)
-    private long year; // 4 digit validation here (\b\d{4}\b) ?
+    private long year;
 
     // Default constructor
     public Music() {

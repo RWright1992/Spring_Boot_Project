@@ -43,14 +43,14 @@ public class MusicController {
 		return new ResponseEntity<Music>(this.service.getOne(id), HttpStatus.OK);
 	}
 	
-	// DELETE ONE
+	// DELETE
 	@DeleteMapping("/remove/{id}")
 	public ResponseEntity<Boolean> delete(@PathVariable long id) {
 		return (this.service.delete(id)) ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : 
 			new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	// UPDATE ONE
+	// UPDATE
 	@PutMapping("/update/{id}")
 	public ResponseEntity<Music> update(@RequestBody Music newMusic, @PathVariable long id) {
 		return new ResponseEntity<Music>(this.service.update(id, newMusic), HttpStatus.ACCEPTED);

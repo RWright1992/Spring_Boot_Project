@@ -55,6 +55,7 @@ const create = () => {
         "type": TYPE_VALUE
     };
 
+    // Request
     axios.post(`${ADDR}/create`, obj)
         .then((resp) => {
             statusMsg(true);
@@ -65,6 +66,7 @@ const create = () => {
         })
 }
 
+// Put request
 const update = () => {
     // Validate the form
     if (!validateForm("edit")) {
@@ -81,6 +83,7 @@ const update = () => {
         "type": EDIT_FORM["type"].value
     };
 
+    // Request
     axios.put(`${ADDR}/update/${EDIT_FORM["entry-id"].value}`, obj)
         .then((resp) => {
             // statusMsg(true);
@@ -89,6 +92,16 @@ const update = () => {
         }).catch((err) => {
             console.error(err);
             // statusMsg(false);
+        })
+}
+
+// Delete request
+const del = (id) => {
+    axios.delete(`${ADDR}/remove/${id}`)
+        .then((resp) => {
+            getAll();
+        }).catch((err) => {
+            alert(err);
         })
 }
 
@@ -102,7 +115,7 @@ const statusMsg = (bool) => {
         setTimeout(() => {
             FORM_DIV.removeChild(document.querySelector(".alert-success"));
             CREATE_BTN.removeAttribute("disabled");
-        }, 3000)
+        }, 2000)
     } else {
         const ALERT_ERR = document.createElement("div");
         ALERT_ERR.setAttribute("class", "alert alert-danger");
@@ -111,7 +124,7 @@ const statusMsg = (bool) => {
         setTimeout(() => {
             FORM_DIV.removeChild(document.querySelector(".alert-danger"));
             CREATE_BTN.removeAttribute("disabled");
-        }, 3000);
+        }, 2000);
     }
 }
 
@@ -130,8 +143,16 @@ const printResult = (result) => {
     EDIT.setAttribute("class", "btn btn-sm btn-primary edit-btn");
     EDIT.setAttribute("onClick", "openEdit(this.id)");
 
+    const DEL = document.createElement("button");
+    DEL.type = "button";
+    DEL.textContent = "Delete";
+    DEL.id = `${result.id}`;
+    DEL.setAttribute("class", "btn btn-sm btn-danger del-btn");
+    DEL.setAttribute("onClick", "del(this.id)");
+
     ENTRY_DIV.appendChild(ENTRY);
     ENTRY_DIV.appendChild(EDIT);
+    ENTRY_DIV.appendChild(DEL);
     
     RESULTS_DIV.appendChild(ENTRY_DIV);
 }
@@ -154,6 +175,7 @@ const openEdit = (id) => {
     axios.get(`${ADDR}/getOne/${id}`)
         .then((resp) => {
             const ENTRY = resp.data;
+            console.log(ENTRY);
             // Populate modal form with current values
             const EDIT_FORM = document.forms["editForm"];
             EDIT_FORM["name"].value = ENTRY.name;

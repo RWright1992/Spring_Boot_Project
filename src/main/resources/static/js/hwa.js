@@ -37,7 +37,7 @@ const getAll = () => {
 // Post request
 const create = () => {
     // Validate the form
-    if (!validateCreateForm()) {
+    if (!validateForm("create")) {
         return;
     }
 
@@ -46,9 +46,6 @@ const create = () => {
     const ARTIST_VALUE = ARTIST.value;
     const YEAR_VALUE = YEAR.value;
     const TYPE_VALUE = TYPE.value;
-
-    // For checking input vals
-    // console.log(`${NAME_VALUE}${ARTIST_VALUE}${YEAR_VALUE}${TYPE_VALUE}`);
 
     // New object to be created
     let obj = {
@@ -70,7 +67,7 @@ const create = () => {
 
 const update = () => {
     // Validate the form
-    if (!validateEditForm()) {
+    if (!validateForm("edit")) {
         return;
     }
 
@@ -132,8 +129,6 @@ const printResult = (result) => {
     EDIT.id = `${result.id}`;
     EDIT.setAttribute("class", "btn btn-sm btn-primary edit-btn");
     EDIT.setAttribute("onClick", "openEdit(this.id)");
-    // EDIT.setAttribute("data-bs-toggle", "modal");
-    // EDIT.setAttribute("data-bs-target", "#edit-modal")
 
     ENTRY_DIV.appendChild(ENTRY);
     ENTRY_DIV.appendChild(EDIT);
@@ -141,17 +136,8 @@ const printResult = (result) => {
     RESULTS_DIV.appendChild(ENTRY_DIV);
 }
 
-const validateCreateForm = () => {
-    const CREATE_FORM = document.forms["createForm"];
-    if (CREATE_FORM["name"].value == "" || CREATE_FORM["artist"].value == "" || CREATE_FORM["year"].value == "" || CREATE_FORM["type"].value == "") {
-        alert("All fields require a value!");
-        return false;
-    }
-    return true;
-}
-
-const validateEditForm = () => {
-    const CREATE_FORM = document.forms["editForm"];
+const validateForm = (type) => {
+    const CREATE_FORM = document.forms[`${type}Form`];
     if (CREATE_FORM["name"].value == "" || CREATE_FORM["artist"].value == "" || CREATE_FORM["year"].value == "" || CREATE_FORM["type"].value == "") {
         alert("All fields require a value!");
         return false;

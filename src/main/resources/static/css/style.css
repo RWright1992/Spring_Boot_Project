@@ -114,8 +114,8 @@ footer {
 }
 
 .alert-success {
-    color: #0f5132 !important;
-    background-color: #4dec56 !important;
+    color: #ffffff !important;
+    background-color: #5aaa5e !important;
     border: none !important;
 }
 
@@ -206,4 +206,28 @@ footer {
     border-color: #ffffff00;
     color: white;
     text-align: center;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #386a76;
+    border-color: #8fa3a9;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    color: #fff;
+    background-color: #294e57;
+    border-color: #8fa3a9;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #bf4a56;
+    border-color: #90a4a9;
+}
+
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active {
+    color: #fff;
+    background-color: #9b2e39;
+    border-color: #90a4a9;
 }

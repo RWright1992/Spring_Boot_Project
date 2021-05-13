@@ -67,7 +67,7 @@ footer {
     margin-top: 2em;
     margin-left: 2em;
     padding: 0.5em;
-    width: 75%;
+    width: 60vw;
     display: inline-block;
     position: absolute;
     overflow: auto;
@@ -142,16 +142,6 @@ footer {
     padding-bottom: 2.5em;
 }
 
-.entry {
-    width: 90%;
-}
-
-@media screen and (max-width: 767px) {
-    .entry {
-        width: 70%;
-    }
-  }
-
 .del-btn {
     position: absolute;
     right: 0;
@@ -197,7 +187,6 @@ footer {
 }
 
 .entry-values {
-    max-width: 45.5em;
     border-style: solid;
     border-width: 2px;
     border-radius: 6px;
@@ -206,6 +195,7 @@ footer {
     border-color: #ffffff00;
     color: white;
     text-align: center;
+    width:50vw;
 }
 
 .btn-primary {
@@ -230,4 +220,22 @@ footer {
     color: #fff;
     background-color: #9b2e39;
     border-color: #90a4a9;
+}
+
+@media screen and (max-width: 1200px) {
+    .entry-values {
+        width: 48vw;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .entry-values {
+        width: 47vw;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .entry-values {
+        width: 43.5vw;
+    }
 }

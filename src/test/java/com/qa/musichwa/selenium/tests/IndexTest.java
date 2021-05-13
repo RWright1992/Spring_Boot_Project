@@ -50,7 +50,7 @@ public class IndexTest {
 	public void init() {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
-		options.setHeadless(false);
+		options.setHeadless(true);
 		options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
 		
 		driver = new ChromeDriver(options);

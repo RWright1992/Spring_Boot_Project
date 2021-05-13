@@ -1,6 +1,7 @@
 package com.qa.musichwa.selenium.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
@@ -8,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
@@ -78,12 +80,20 @@ public class IndexTest {
 		}
 	}
 	
-//	@Test
-//	public void testFormInput() {
-//		driver.get(DOMAIN + port);
-//		IndexPage index = PageFactory.initElements(driver, IndexPage.class);
-//		
-//	}
+	@Test
+	public void testFormInput() {
+		driver.get(DOMAIN + port);
+		
+		IndexPage index = PageFactory.initElements(driver, IndexPage.class);
+		
+		index.getNameInput().sendKeys("Test");
+		index.getArtistInput().sendKeys("Test2");
+		index.getYearInput().sendKeys("2021");
+		index.getTypeInput().sendKeys("Single");
+		index.getCreateBtn().click();
+		
+		assertFalse(!driver.findElements(By.className("alert-success")).isEmpty());
+	}
 	
 	@After
 	public void shutdown() {

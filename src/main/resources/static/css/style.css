@@ -195,3 +195,14 @@ footer {
     padding-top: 0 !important;
     justify-content: center !important;
 }
+
+.entry-values {
+    max-width: 45.5em;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 6px;
+    height: 2em;
+    background-color: #386a76;
+    border-color: #ffffff00;
+    color: white;
+}

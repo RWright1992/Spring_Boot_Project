@@ -134,7 +134,11 @@ const printResult = (result) => {
 
     const ENTRY = document.createElement("div");
     ENTRY.setAttribute("class", "entry");
-    ENTRY.textContent = `Name: ${result.name} Artist: ${result.artist} Year: ${result.year} Type: ${result.type}`;
+
+    const VALUES = document.createElement("div");
+    VALUES.setAttribute("class", "entry-values");
+    VALUES.textContent = `${result.type} | ${result.name} | ${result.artist} | Released: ${result.year}`;
+    
 
     const EDIT = document.createElement("button");
     EDIT.type = "button";
@@ -150,6 +154,7 @@ const printResult = (result) => {
     DEL.setAttribute("class", "btn btn-sm btn-danger del-btn");
     DEL.setAttribute("onClick", "del(this.id)");
 
+    ENTRY.appendChild(VALUES);
     ENTRY_DIV.appendChild(ENTRY);
     ENTRY_DIV.appendChild(EDIT);
     ENTRY_DIV.appendChild(DEL);

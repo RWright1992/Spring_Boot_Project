@@ -20,6 +20,24 @@ public class IndexPage {
 	@FindBy(name = "type")
 	private WebElement typeInput;
 	
+	@FindBy(className = "del-btn")
+	private WebElement delButton;
+	
+	@FindBy(id = "reset-btn")
+	private WebElement resetButton;
+	
+	@FindBy(className = "edit-btn")
+	private WebElement editButton;
+	
+	@FindBy(className = "alert-success")
+	private WebElement successAlert;
+	
+	@FindBy(id = "results-div")
+	private WebElement resultsDiv;
+	
+	@FindBy(id = "edit-modal")
+	private WebElement editModal;
+
 	public WebElement getNameInput() {
 		return nameInput;
 	}
@@ -38,5 +56,29 @@ public class IndexPage {
 
 	public WebElement getCreateBtn() {
 		return createBtn;
+	}
+
+	public WebElement getDelButton() {
+		return delButton;
+	}
+	
+	public WebElement getEditButton() {
+		return editButton;
+	}
+
+	public WebElement getSuccessAlert() {
+		return successAlert;
+	}
+
+	public WebElement getResetButton() {
+		return resetButton;
+	}
+
+	public WebElement getResultsDiv() {
+		return resultsDiv;
+	}
+
+	public WebElement getEditModal() {
+		return editModal;
 	}
 }

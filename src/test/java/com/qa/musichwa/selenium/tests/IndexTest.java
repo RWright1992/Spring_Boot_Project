@@ -24,7 +24,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qa.musichwa.selenium.pages.IndexPage;
@@ -32,6 +35,8 @@ import com.qa.musichwa.selenium.pages.IndexPage;
 @ContextConfiguration
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@Sql(scripts = {"classpath:testschema.sql", "classpath:testdata.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@ActiveProfiles("test")
 public class IndexTest {
 
 	private final String DOMAIN = "http://localhost:";
@@ -81,7 +86,7 @@ public class IndexTest {
 	}
 	
 	@Test
-	public void testFormInput() {
+	public void testFormInputAlert() {
 		driver.get(DOMAIN + port);
 		
 		IndexPage index = PageFactory.initElements(driver, IndexPage.class);
@@ -92,7 +97,69 @@ public class IndexTest {
 		index.getTypeInput().sendKeys("Single");
 		index.getCreateBtn().click();
 		
-		assertFalse(!driver.findElements(By.className("alert-success")).isEmpty());
+		WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.visibilityOf(index.getSuccessAlert()));
+		
+		assertFalse(driver.findElements(By.className("alert-success")).isEmpty());
+	}
+	
+	@Test
+	public void testCreation() {
+		driver.get(DOMAIN + port);
+		
+		IndexPage index = PageFactory.initElements(driver, IndexPage.class);
+		
+		index.getNameInput().sendKeys("Test");
+		index.getArtistInput().sendKeys("Test2");
+		index.getYearInput().sendKeys("2021");
+		index.getTypeInput().sendKeys("Single");
+		index.getCreateBtn().click();
+		
+		WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.visibilityOf(index.getSuccessAlert()));
+		
+		assertTrue(index.getResultsDiv().getText().contains("Test2"));
+	}
+	
+	@Test
+	public void testDelete() {
+		driver.get(DOMAIN + port);
+		
+		IndexPage index = PageFactory.initElements(driver, IndexPage.class);
+		
+		WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.visibilityOf(index.getDelButton()));
+		index.getDelButton().click();
+		
+		assertTrue(!driver.findElements(By.className("entry-values")).isEmpty());
+	}
+	
+	@Test
+	public void testReset() {
+		driver.get(DOMAIN + port);
+		
+		IndexPage index = PageFactory.initElements(driver, IndexPage.class);
+		
+		index.getNameInput().sendKeys("Test");
+		index.getResetButton().click();
+		
+		assertFalse(index.getNameInput().getText().contains("Test"));
+	}
+	
+	@Test
+	public void testModal() {
+		driver.get(DOMAIN + port);
+		
+		IndexPage index = PageFactory.initElements(driver, IndexPage.class);
+		
+		index.getEditButton().click();
+		
+		WebDriverWait wait = new WebDriverWait(driver, 2);
+        wait.until(ExpectedConditions.visibilityOf(index.getEditModal()));
+        
+		driver.switchTo().activeElement();
+		
+		assertTrue(index.getEditModal().getText().contains("Artist"));
 	}
 	
 	@After

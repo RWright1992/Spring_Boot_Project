@@ -29,20 +29,28 @@ public class MusicService implements ServiceIF<Music> {
 
 	@Override
 	public Music getOne(long id) {
-		return this.repo.findById(id).get();
+		Optional<Music> entryOptional = this.repo.findById(id);
+		if (entryOptional.isPresent()) {
+			return entryOptional.get();
+		}
+		return null;
 	}
 
 	@Override
 	public Music update(long id, Music newMusic) {
 		Optional<Music> existingOptional = this.repo.findById(id);
-        Music existing = existingOptional.get();
-
-        existing.setType(newMusic.getType());
-        existing.setName(newMusic.getName());
-        existing.setArtist(newMusic.getArtist());
-        existing.setYear(newMusic.getYear());
+		
+		if (existingOptional.isPresent()) {
+			Music existing = existingOptional.get();
+			existing.setType(newMusic.getType());
+	        existing.setName(newMusic.getName());
+	        existing.setArtist(newMusic.getArtist());
+	        existing.setYear(newMusic.getYear());
+	        
+	        return this.repo.saveAndFlush(existing);
+		}
         
-        return this.repo.saveAndFlush(existing);
+		return null;
 	}
 
 	@Override

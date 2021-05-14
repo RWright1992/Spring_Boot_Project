@@ -57,7 +57,7 @@ public class MusicServiceUnitTest {
 		
 		Mockito.when(this.repo.findById(1L)).thenReturn(OptionalOutput);
 		
-		assertTrue(this.service.getOne(1L).equals(output));
+		assertEquals(output, this.service.getOne(1L));
 		
 		Mockito.verify(this.repo, Mockito.times(1)).findById(1L);
 	}

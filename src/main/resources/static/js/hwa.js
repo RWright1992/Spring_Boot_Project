@@ -1,6 +1,6 @@
 "use strict";
 
-const ADDR = `${window.location.href}/api`;
+const ADDR = "http://localhost";
 
 // Divs
 const RESULTS_DIV = document.querySelector("#results-div");
@@ -23,7 +23,7 @@ const setup = () => {
 
 // Get request
 const getAll = () => {
-    axios.get(`${ADDR}/getAll`)
+    axios.get(`${ADDR}:${location.port}/api/getAll`)
         .then((resp) => {
             RESULTS_DIV.innerHTML = "";
             const RESULTS = resp.data;
@@ -55,7 +55,7 @@ const create = () => {
     };
 
     // Request
-    axios.post(`${ADDR}/create`, obj)
+    axios.post(`${ADDR}:${location.port}/api/create`, obj)
         .then((resp) => {
             statusMsg(true);
             getAll();
@@ -83,7 +83,7 @@ const update = () => {
     };
 
     // Request
-    axios.put(`${ADDR}/update/${EDIT_FORM["entry-id"].value}`, obj)
+    axios.put(`${ADDR}:${location.port}/api/update/${EDIT_FORM["entry-id"].value}`, obj)
         .then((resp) => {
             // statusMsg(true);
             $("#edit-modal").modal("hide");
@@ -96,7 +96,7 @@ const update = () => {
 
 // Delete request
 const del = (id) => {
-    axios.delete(`${ADDR}/remove/${id}`)
+    axios.delete(`${ADDR}:${location.port}/api/remove/${id}`)
         .then((resp) => {
             getAll();
         }).catch((err) => {
@@ -176,10 +176,9 @@ const openEdit = (id) => {
     datepickerSetup();
 
     // Get the current values for selected entry
-    axios.get(`${ADDR}/getOne/${id}`)
+    axios.get(`${ADDR}:${location.port}/api/getOne/${id}`)
         .then((resp) => {
             const ENTRY = resp.data;
-            console.log(ENTRY);
             // Populate modal form with current values
             const EDIT_FORM = document.forms["editForm"];
             EDIT_FORM["name"].value = ENTRY.name;

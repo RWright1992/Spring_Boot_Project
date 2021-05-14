@@ -117,7 +117,7 @@ Ensure the *pom.xml* file is visible and selected, then click Import.
 
 To run the application from Eclipse, simply right click the project folder in the hierarchical view on the left and *Right click > Run as > Spring Boot app*
 
-Once the server has started, you will be able to browse to http://localhost:8080 and begin interacting with the application.
+Once the server has started, you will be able to browse to http://localhost:8080/Index.html and begin interacting with the application.
 
 By default, port 8080 is used by the application. If you need to set a different port, navigate to the application-prod.properties file in the "src/test/resources" folder.
 Then, set the value of the server.port property:

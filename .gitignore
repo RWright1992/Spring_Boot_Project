@@ -42,7 +42,7 @@ buildNumber.properties
 
 # Package Files #
 *.jar
-!ims-0.0.1-jar-with-dependencies.jar
+!MusicHWA-0.0.1-SNAPSHOT.jar
 *.war
 *.nar
 *.ear

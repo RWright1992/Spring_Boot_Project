@@ -3,26 +3,32 @@ src/main/java coverage: 92.4%
 
 A Spring Boot web application used for managing a collection of music. You can create, read, update and delete music from the database using a front-end web page.
 
-## Getting Started
+# Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Prerequisites
+## Prerequisites
 
-#### Java 
+### Java 
 
-Go to this link [download JDK.] (https://www.oracle.com/java/technologies/javase-jdk16-downloads.html)
+Go to this link [download JDK](https://www.oracle.com/java/technologies/javase-jdk16-downloads.html)
+
 Click the Download link that corresponds to the .exe for your version of Windows.
 
 ```e.g. jdk-16.0.1_windows-x64_bin.exe```
 
 Run the installer with admin priveleges and follow the instructions.
+
 Check if the installer set the *PATH* veriable for you, as JDK15+ does this automatically.
 
 To set the *PATH* variable, browse to **Control Panel** and then **System.** 
+
 Click **Advanced** and then **Environment Variables.**
+
 Add the location of the *bin* folder of your JDK installation to the **PATH** variable in **System Variables.**
+
 Typically, the full path is:
+
 *C:\Program Files\Java\jdk-16\bin*
 
 To verify your JDK installation, launch a command prompt window and type:
@@ -35,21 +41,24 @@ And
 
 If you don't get a successful response from these commands, you will need to return to the installation process.
 
-#### Maven
+### Maven
 
-Go to this link [download Maven.] (https://maven.apache.org/download.cgi)
+Go to this link [download Maven](https://maven.apache.org/download.cgi)
+
 Click the Binary zip archive download under 'Files'.
 
 ```e.g. apache-maven-3.8.1-bin.zip```
 
-Once that has downloaded, unzip it into your C:\Program Files folder.
-Copy the path for the installation.
+Once that has downloaded, unzip it into your C:\Program Files folder. Copy the path for the installation.
 
 ```e.g. C:\Program Files\apache-maven-3.6.3```
 
 To set the *PATH* variable, browse to **Control Panel** and then **System.** 
+
 Click **Advanced** and then **Environment Variables.**
+
 Add a new system variable using that path, with the name **M2_HOME** or something recognisable.
+
 Finally, add **%M2_HOME%\bin** to the **PATH** variable.
 
 To verify the Maven installation, launch a command prompt window and type:
@@ -58,43 +67,63 @@ To verify the Maven installation, launch a command prompt window and type:
 
 If you don't get a successful response from the command, you will need to return to the installation process.
 
-#### Eclipse
+### Eclipse
 
-Go to this link [download Eclipse.] (https://www.eclipse.org/downloads/)
+Go to this link [download Eclipse](https://www.eclipse.org/downloads/)
+
 Download the X86_64 executable.
+
 Run the .exe and complete the setup wizard to install Eclipse, default/java options are fine throughout.
 
-#### Spring Tool Suit 4
+### Spring Tool Suit 4
 
-Go to this link [Eclipse marketplace.] (https://marketplace.eclipse.org/content/spring-tools-4-aka-spring-tool-suite-4)
-Drag and drop the "Install" button inside of a running eclipse.
-Spring will be automatically installed.
+Go to this link [Eclipse marketplace](https://marketplace.eclipse.org/content/spring-tools-4-aka-spring-tool-suite-4)
 
-#### MySQL Server
+Drag and drop the "Install" button inside of a running eclipse. Spring will be automatically installed.
 
-Go to this link [download MySQL.] (https://dev.mysql.com/downloads/windows/installer/8.0.html)
+### MySQL Server
+
+Go to this link [download MySQL](https://dev.mysql.com/downloads/windows/installer/8.0.html)
+
 Download the *mysql-installer-community-8.0.24.0.msi*
+
 Complete the setup wizard, making sure to select MySQL server.
+
 All default options are fine, with a default password of **root** for the server.
+
 If you use different login details, be sure to change the values in the application-prod.properties file in the project to connect to your database.
 
-#### Web Driver for Selenium tests
+### Web Driver for Selenium tests
 
 Depending on the browser you use, you'll need a specific driver. 
-For ease, and to ensure compatability, please use Google Chrome, which you can download [here.] (https://www.google.com/chrome/)
+
+For ease, and to ensure compatability, please use Google Chrome, which you can download [here](https://www.google.com/chrome/)
+
 The tests written for Selenium in this project require Google Chrome, but feel free to refactor the code and use which ever driver you like.
 
 Below is a list of various web drivers for different browsers:
 
+
+
 Chrome/Chromium   - [Download](https://chromedriver.storage.googleapis.com/index.html)
+
 Firefox           - [Download](https://chromedriver.storage.googleapis.com/index.html)
+
 Edge              - [Download](https://chromedriver.storage.googleapis.com/index.html)
+
 Internet Explorer - [Download](https://chromedriver.storage.googleapis.com/index.html)
+
 Opera             - [Download](https://chromedriver.storage.googleapis.com/index.html)
+
+
 
 Make sure to check your browser version and choose the appropriate driver.
 
 Place the driver (e.g. chromedriver.exe) into the "src/test/resources" folder of the project once you have cloned it down to your local machine.
+
+### SonarQube for static analysis
+
+For setting up a SonarQube server for testing use the guide [here](https://docs.sonarqube.org/latest/setup/get-started-2-minutes/)
 
 ## Installing
 
@@ -104,13 +133,16 @@ A step by step series of examples that tell you how to get a development env run
 
 Use the following command to clone this repository to your local machine:
 
-```git clone https://github.com/ALowtonQA/ALowtonQA_assessment.git```
+```git clone https://github.com/ALowtonQA/ALowtonQA_HWA.git```
 
 ### Import the project to Eclipse as an existing Maven project
 
 In Eclipse, choose *File > Import*.
+
 Then, under **Maven** choose **Existing Maven Project**.
+
 Select the previously imported repository as the root directory.
+
 Ensure the *pom.xml* file is visible and selected, then click Import.
 
 ### Run the Application
@@ -120,13 +152,14 @@ To run the application from Eclipse, simply right click the project folder in th
 Once the server has started, you will be able to browse to http://localhost:8080/Index.html and begin interacting with the application.
 
 By default, port 8080 is used by the application. If you need to set a different port, navigate to the application-prod.properties file in the "src/test/resources" folder.
+
 Then, set the value of the server.port property:
-*server.port=XXXX*
+
+```server.port=XXXX```
 
 Also, if your MySQL database instance is running on a port other than 3306, be sure to change the "spring.datasource.url" value in the same file.
 
-To run the application from your command line, browse to the root folder of the project using a command prompt.
-Then execute the following command:
+To run the application from your command line, browse to the root folder of the project using a command prompt. Then execute the following command:
 
 ```java -jar MusicHWA-0.0.1-SNAPSHOT.jar```
 
@@ -145,23 +178,52 @@ Tests can also be ran individually.
 ### Unit Tests 
 
 To test only the functionality of the MusicController class:
+
 Browse to the *src/test/java/com.qa.musichwa.controller* package using the hierarchical view on the left.
+
 Locate the *MusicControllerUnitTest* file and *Right click > Run as > JUnit Test*
+
 This will unit test the Music Controller class in isolation, by testing each method functions correctly.
 
 ### Integration Tests 
 
 To run an integration test:
+
 Browse to the *src/test/java/com.qa.musichwa.controller* package using the hierarchical view on the left.
+
 Locate the *MusicControllerIntegrationTest* file and *Right click > Run as > JUnit Test*
+
 This will integration test the controller, service and repo layers of the application using a MockMVC to make API calls.
 
-### Automated User-Acceptance tests
+### Automated User-Acceptance tests with Selenium
 
 To run only the selenium tests:
+
 Browse to the *src/test/java/com.qa.musichwa.selenium.tests* package using the hierarchical view on the left.
+
 Locate the *IndexTest* file and *Right click > Run as > JUnit Test*
+
 This will user-acceptance test the front-end, by automating interactions that a user would do.
+
+### Static Analysis with SonarQube
+
+Ensure your SonarQube server is running, as per the guide listed above. 
+
+Then open a Git Bash in the project directory and execute the following maven command:
+
+``` mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=admin ```
+
+Be sure to change your username and password to the correct values if they aren't both admin.
+
+If you get a build success, you will now be able to go to your SonarQube host (e.g. http://localhost:9000) and see the results of the code analysis.
+
+## Swagger for API endpoints
+
+If you'd like to see the API endpoints for the application, you can browse to http:localhost:8080/swagger-ui/index.html once the application is running. 
+
+Alternatively, you can refer to the image below:
+
+![API Endpoints](https://github.com/ALowtonQA/ALowtonQA_HWA/blob/main/documentation/API_Endpoints.png)
 
 ## Project Management Board
 * [Jira Board](https://anoushlowtonqa.atlassian.net/jira/software/projects/HWA/boards/4)

@@ -13,6 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Go to this link [download JDK.] (https://www.oracle.com/java/technologies/javase-jdk16-downloads.html)
 Click the Download link that corresponds to the .exe for your version of Windows.
+
 ```e.g. jdk-16.0.1_windows-x64_bin.exe```
 
 Run the installer with admin priveleges and follow the instructions.
@@ -25,8 +26,11 @@ Typically, the full path is:
 *C:\Program Files\Java\jdk-16\bin*
 
 To verify your JDK installation, launch a command prompt window and type:
+
 ```javac - version```
+
 And
+
 ```java -version```
 
 If you don't get a successful response from these commands, you will need to return to the installation process.
@@ -35,10 +39,12 @@ If you don't get a successful response from these commands, you will need to ret
 
 Go to this link [download Maven.] (https://maven.apache.org/download.cgi)
 Click the Binary zip archive download under 'Files'.
+
 ```e.g. apache-maven-3.8.1-bin.zip```
 
 Once that has downloaded, unzip it into your C:\Program Files folder.
 Copy the path for the installation.
+
 ```e.g. C:\Program Files\apache-maven-3.6.3```
 
 To set the *PATH* variable, browse to **Control Panel** and then **System.** 
@@ -47,6 +53,7 @@ Add a new system variable using that path, with the name **M2_HOME** or somethin
 Finally, add **%M2_HOME%\bin** to the **PATH** variable.
 
 To verify the Maven installation, launch a command prompt window and type:
+
 ```mvn -version```
 
 If you don't get a successful response from the command, you will need to return to the installation process.
@@ -96,6 +103,7 @@ A step by step series of examples that tell you how to get a development env run
 ### Clone the project from GitHub
 
 Use the following command to clone this repository to your local machine:
+
 ```git clone https://github.com/ALowtonQA/ALowtonQA_assessment.git```
 
 ### Import the project to Eclipse as an existing Maven project
@@ -119,6 +127,7 @@ Also, if your MySQL database instance is running on a port other than 3306, be s
 
 To run the application from your command line, browse to the root folder of the project using a command prompt.
 Then execute the following command:
+
 ```java -jar MusicHWA-0.0.1-SNAPSHOT.jar```
 
 ## Running the tests
